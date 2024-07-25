@@ -1,0 +1,1 @@
+cinema.png: http://127.0.0.1:5000/static/uploads/cinema.png

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Subir Imagen</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Subir Imagen</h1>
+      <form method="post" enctype="multipart/form-data">
+        <div>
+          <label for="file">Selecciona una imagen:</label>
+          <input type="file" name="file" id="file">
+        </div>
+        <div>
+          <button type="submit">Subir</button>
+        </div>
+      </form>
+      <a href="{{ url_for('home') }}">Volver a Inicio</a>
+    </div>
+  </body>
+</html>

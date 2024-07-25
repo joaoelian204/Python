@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Mi Aplicación Flask</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>¡Hola, Mundo!</h1>
+      <p>Bienvenido a mi aplicación web Flask.</p>
+      <a href="{{ url_for('upload_file') }}">Subir Imagen</a>
+      <div class="gallery">
+        {% for image in images %}
+          <div class="image">
+            <img src="{{ url_for('static', filename='uploads/' ~ image.filename) }}" alt="{{ image.filename }}" onclick="openModal('{{ url_for('static', filename='uploads/' ~ image.filename) }}')">
+            <form action="{{ url_for('delete_image', image_id=image.id) }}" method="POST" style="display:inline;">
+              <button type="submit">Eliminar</button>
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+      function openModal(src) {
+        document.getElementById('myModal').style.display = 'block';
+        document.getElementById('img01').src = src;
+      }
+
+      function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
+
